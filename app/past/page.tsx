@@ -6,7 +6,7 @@ export default function PastPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-black text-zinc-100">
       <WaveBackground />
-      <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-5xl flex-col px-6 pb-16 pt-6 sm:px-10 lg:px-14 xl:max-w-6xl">
+      <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-20 pt-6 sm:px-10 sm:pb-24 lg:px-14 xl:max-w-6xl">
         <GlassNavBar variant="page" />
 
         <header className="mt-8 shrink-0 text-left">
@@ -18,7 +18,7 @@ export default function PastPage() {
           </p>
         </header>
 
-        <div className="mt-8 flex min-h-0 flex-1 flex-col">
+        <div className="mt-8">
           <PastSelfGraph />
         </div>
       </div>

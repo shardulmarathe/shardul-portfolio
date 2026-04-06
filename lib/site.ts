@@ -17,6 +17,6 @@ export const SITE = {
     currentProjects:
       "Developing multi-turn LLM evaluations for lexical entrainment. Mastering probabilistic modeling and statistical inference. Designing and building complex embedded systems. ",
     funFacts:
-      "The Internet Weighs About the Same as a Strawberry",
+      "An AI-generated artwork sold for over $430,000",
   },
 } as const;

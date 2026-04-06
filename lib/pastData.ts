@@ -13,6 +13,8 @@ export type PastRoleData = {
   bullets: string[];
   lessons: string;
   image: string;
+  /** Hover-card image fit mode */
+  imageFit?: "cover" | "contain";
   /** 3D graph hover card */
   cardLines: [string, string];
   /** Sphere size weight in force graph */
@@ -36,6 +38,7 @@ export const PAST_DATA: PastRoleData[] = [
     lessons:
       "Leadership in a dojo is repetition without condescension—the same cue, calmly, until it lands. You learned that respect flows both ways when you are accountable for someone else’s safety and confidence.",
     image: "/past/kf-assistant-master.jpg",
+    imageFit: "cover",
     cardLines: [
       "Spent two years as an Assistant Master, teaching everyone from white belts to black belts at Dragon Rhythm.",
       "Eagle Level Assistant—coaching forms, discipline, and tests with the same patience you were once shown.",
@@ -58,6 +61,7 @@ export const PAST_DATA: PastRoleData[] = [
     lessons:
       "International rooms reward humility: you can place high beside people with twice your years in the art when preparation meets trust in coaching—and when you treat every round as information, not verdict.",
     image: "/past/kf-international-competitor.jpg",
+    imageFit: "cover",
     cardLines: [
       "Medaled at the 2024 Golden State International Wushu Championships across three weapons forms.",
       "Performed in China alongside teammates for audiences that included Shaolin leadership—culture and craft in the same trip.",
@@ -80,6 +84,7 @@ export const PAST_DATA: PastRoleData[] = [
     lessons:
       "The best notes name one concrete lever—an image, a transition, a breath—and leave confidence intact. Teaching oratory made you a better editor of your own blind spots.",
     image: "/past/speech-coach.jpg",
+    imageFit: "cover",
     cardLines: [
       "Coach platform events at Golden State Academy and lead the school Speech & Debate club.",
       "Translate competition-hardened habits into feedback others can rehearse, not just hear once.",
@@ -102,6 +107,7 @@ export const PAST_DATA: PastRoleData[] = [
     lessons:
       "You can respect judges without outsourcing your worth to a single sheet. The season’s lesson was steadiness: revise after every tournament, sleep when you can, and treat pressure as signal—not noise.",
     image: "/past/nsda-speech-competitor.jpg",
+    imageFit: "cover",
     cardLines: [
       "Varsity informative competitor across NIETOC, TOC, and Nationals—California state champion in the event.",
       "Season of majors, bids, and rewrites: each round treated as data for the next version of the speech.",
@@ -124,6 +130,7 @@ export const PAST_DATA: PastRoleData[] = [
     lessons:
       "Captaincy is maintenance culture—documentation, handoffs, and calm when the bot fails between matches. A trophy is loud; a repeatable checklist is what saves the next event.",
     image: "/past/ftc-team-captain.jpg",
+    imageFit: "cover",
     cardLines: [
       "Led an FTC team through autonomous code, driver practice, and integration under season deadlines.",
       "Used Java with OpenCV/TensorFlow when the game demanded vision; earned Design and Connect recognition.",
@@ -133,7 +140,7 @@ export const PAST_DATA: PastRoleData[] = [
   {
     id: "robotics-founder",
     slug: "robotics-founder",
-    title: "Robotics Founder",
+    title: "Business Owner",
     intro:
       "OwnABot Academy started as a bet that younger students shouldn’t have to stumble through FIRST alone—foundations could be taught with the same joy as competition.",
     description:
@@ -146,6 +153,7 @@ export const PAST_DATA: PastRoleData[] = [
     lessons:
       "Founding is succession: systems beat charisma. If the next cohort can run a checklist you wrote, the academy survives a busy semester when you cannot be everywhere.",
     image: "/past/robotics-founder.jpg",
+    imageFit: "cover",
     cardLines: [
       "Founded and lead OwnABot Academy—teaching build and code basics that seed competitive FIRST teams.",
       "Scaled through after-school partners; multiple teams qualified to state- and world-level play.",

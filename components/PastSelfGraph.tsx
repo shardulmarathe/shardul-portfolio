@@ -25,7 +25,7 @@ import {
 const ForceGraph3D = dynamic(() => import("react-force-graph-3d"), {
   ssr: false,
   loading: () => (
-    <div className="flex h-full min-h-[420px] w-full items-center justify-center text-sm text-slate-500">
+    <div className="flex h-full w-full items-center justify-center text-sm text-slate-500">
       Initializing 3D graph…
     </div>
   ),
@@ -40,6 +40,7 @@ type HoveredPastNode = {
   title: string;
   cardLines: [string, string];
   image?: string;
+  imageFit?: "cover" | "contain";
 };
 
 type GNode = NodeObject & {
@@ -48,6 +49,7 @@ type GNode = NodeObject & {
   title: string;
   cardLines: [string, string];
   image?: string;
+  imageFit?: "cover" | "contain";
   val: number;
 };
 
@@ -62,26 +64,29 @@ function getStrength(link: GLink): LinkStrength {
 }
 
 const CARD_W = 320;
-const CARD_H_EST = 380;
+const CARD_H_EST = 280;
 const POS_THROTTLE_MS = 48;
 
 function clampCardToViewport(
   anchorX: number,
   anchorY: number,
   mouseX: number,
-  mouseY: number
+  mouseY: number,
+  viewportW: number,
+  viewportH: number
 ): { left: number; top: number } {
-  const vw = typeof window !== "undefined" ? window.innerWidth : 800;
-  const vh = typeof window !== "undefined" ? window.innerHeight : 600;
+  const vw = Math.max(viewportW, 320);
+  const vh = Math.max(viewportH, 240);
   const m = 12;
-  // Blend node anchor (70%) with mouse (30%) so the card feels tied to the cursor without covering the node.
-  const x = anchorX * 0.72 + mouseX * 0.28;
-  const y = anchorY * 0.72 + mouseY * 0.28;
+  const cardW = Math.min(CARD_W, vw - m * 2);
+  // Keep the card visually tied to node position; cursor adds a subtle nudge only.
+  const x = anchorX * 0.9 + mouseX * 0.1;
+  const y = anchorY * 0.9 + mouseY * 0.1;
 
-  let left = x - CARD_W / 2;
+  let left = x - cardW / 2;
   let top = y - CARD_H_EST - 20;
 
-  left = Math.min(Math.max(m, left), vw - CARD_W - m);
+  left = Math.min(Math.max(m, left), vw - cardW - m);
   top = Math.min(Math.max(m, top), vh - CARD_H_EST - m);
 
   return { left, top };
@@ -96,6 +101,7 @@ function nodeToHoveredPayload(n: GNode): HoveredPastNode | null {
     title: role.title,
     cardLines: role.cardLines,
     image: role.image,
+    imageFit: role.imageFit,
   };
 }
 
@@ -140,13 +146,27 @@ export function PastSelfGraph() {
     if (!fg || forcesConfigured.current) return;
     forcesConfigured.current = true;
     const linkForce = fg.d3Force("link") as
-      | { distance?: (fn: (l: GLink) => number) => unknown }
+      | {
+          distance?: (fn: (l: GLink) => number) => unknown;
+          strength?: (fn: (l: GLink) => number) => unknown;
+        }
       | undefined;
-    linkForce?.distance?.((l) => LINK_DISTANCE[getStrength(l)]);
+    linkForce?.distance?.((l) => LINK_DISTANCE[getStrength(l)] * 1.22);
+    linkForce?.strength?.((l) => {
+      const st = getStrength(l);
+      return st === "strong" ? 0.42 : st === "medium" ? 0.28 : 0.16;
+    });
     const charge = fg.d3Force("charge") as
       | { strength?: (n: number) => unknown }
       | undefined;
-    charge?.strength?.(-158);
+    charge?.strength?.(-230);
+    const forceX = fg.d3Force("x") as { strength?: (n: number) => unknown } | undefined;
+    const forceY = fg.d3Force("y") as { strength?: (n: number) => unknown } | undefined;
+    const forceZ = fg.d3Force("z") as { strength?: (n: number) => unknown } | undefined;
+    // Flatten distribution into a wider "landscape" cloud by constraining Y/Z more than X.
+    forceX?.strength?.(0.018);
+    forceY?.strength?.(0.08);
+    forceZ?.strength?.(0.07);
     fg.d3ReheatSimulation();
   }, []);
 
@@ -156,18 +176,22 @@ export function PastSelfGraph() {
     configureForces();
     if (!viewInitialized.current) {
       viewInitialized.current = true;
-      fg.zoomToFit(700, 64);
-      fg.cameraPosition({ x: 92, y: -46, z: 228 }, { x: 0, y: 0, z: 0 }, 1400);
+      fg.zoomToFit(820, 136);
+      fg.cameraPosition({ x: 118, y: -26, z: 286 }, { x: 0, y: 0, z: 0 }, 1500);
       const ctrl = fg.controls() as {
         autoRotate?: boolean;
         autoRotateSpeed?: number;
         enableDamping?: boolean;
         dampingFactor?: number;
+        minDistance?: number;
+        maxDistance?: number;
       };
       ctrl.autoRotate = true;
-      ctrl.autoRotateSpeed = 0.32;
+      ctrl.autoRotateSpeed = 0.24;
       ctrl.enableDamping = true;
       ctrl.dampingFactor = 0.07;
+      ctrl.minDistance = 150;
+      ctrl.maxDistance = 560;
     }
   }, [configureForces]);
 
@@ -183,14 +207,11 @@ export function PastSelfGraph() {
     if (!canvas) return;
 
     const p = fg.graph2ScreenCoords(n.x, n.y, n.z);
-    const crect = canvas.getBoundingClientRect();
-    const sx = crect.width / Math.max(dims.w, 1);
-    const sy = crect.height / Math.max(dims.h, 1);
-    const anchorX = crect.left + p.x * sx;
-    const anchorY = crect.top + p.y * sy;
+    const anchorX = p.x;
+    const anchorY = p.y;
 
     const { x: mx, y: my } = mouseRef.current;
-    const { left, top } = clampCardToViewport(anchorX, anchorY, mx, my);
+    const { left, top } = clampCardToViewport(anchorX, anchorY, mx, my, dims.w, dims.h);
 
     const now = performance.now();
     if (now - lastPosEmitRef.current < POS_THROTTLE_MS) return;
@@ -219,10 +240,10 @@ export function PastSelfGraph() {
     (link: object) => {
       const l = link as GLink;
       const st = getStrength(l);
-      let alpha = st === "strong" ? 0.88 : st === "medium" ? 0.52 : 0.26;
+      let alpha = st === "strong" ? 0.52 : st === "medium" ? 0.3 : 0.14;
       if (hoverId) {
         const hit = linkTouchesNode(l, hoverId);
-        alpha = hit ? Math.min(0.95, alpha + 0.38) : alpha * 0.22;
+        alpha = hit ? Math.min(0.84, alpha + 0.2) : alpha * 0.18;
       }
       return `rgba(34, 211, 238, ${alpha})`;
     },
@@ -233,7 +254,7 @@ export function PastSelfGraph() {
     (link: object) => {
       const l = link as GLink;
       let w = LINK_WIDTH_BASE[getStrength(l)];
-      if (hoverId && linkTouchesNode(l, hoverId)) w *= 1.4;
+      if (hoverId && linkTouchesNode(l, hoverId)) w *= 1.3;
       return w;
     },
     [hoverId]
@@ -243,7 +264,7 @@ export function PastSelfGraph() {
     (node: object) => {
       const n = node as GNode;
       const hovered = hoverId === n.id;
-      const baseR = 3.4 + n.val * 0.28;
+      const baseR = 3.9 + n.val * 0.32;
       const r = baseR * (hovered ? 1.18 : 1);
 
       const group = new THREE.Group();
@@ -296,9 +317,10 @@ export function PastSelfGraph() {
   return (
     <div
       ref={wrapRef}
-      className="relative min-h-[min(72dvh,720px)] w-full flex-1 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#030712] shadow-[inset_0_0_80px_-20px_rgba(34,211,238,0.06)]"
+      className="relative mx-auto h-[60vh] max-h-[560px] min-h-[500px] w-full max-w-[1200px] overflow-hidden rounded-2xl border border-white/10 bg-white/5 shadow-[inset_0_0_80px_-20px_rgba(34,211,238,0.06)] backdrop-blur-md"
       onPointerMove={(e) => {
-        mouseRef.current = { x: e.clientX, y: e.clientY };
+        const rect = e.currentTarget.getBoundingClientRect();
+        mouseRef.current = { x: e.clientX - rect.left, y: e.clientY - rect.top };
         if (hoveredNodeRef.current) {
           lastPosEmitRef.current = 0;
           updateCardPosition();
@@ -310,7 +332,7 @@ export function PastSelfGraph() {
         width={dims.w}
         height={dims.h}
         graphData={graphData}
-        backgroundColor="#030712"
+        backgroundColor="rgba(0,0,0,0)"
         showNavInfo={false}
         controlType="orbit"
         enableNodeDrag={false}
@@ -349,7 +371,7 @@ export function PastSelfGraph() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.22, ease: EASE }}
-            className="pointer-events-none fixed z-50 w-[min(92vw,320px)] rounded-xl border border-white/[0.12] bg-zinc-950/75 p-4 shadow-[0_24px_56px_-12px_rgba(34,211,238,0.18)] backdrop-blur-xl"
+            className="pointer-events-none absolute z-50 w-[min(88vw,320px)] rounded-xl border border-white/[0.12] bg-zinc-950/75 p-4 shadow-[0_24px_56px_-12px_rgba(34,211,238,0.18)] backdrop-blur-xl"
             style={{ left: cardPos.left, top: cardPos.top }}
           >
             <div className="relative mb-3 aspect-video w-full overflow-hidden rounded-lg border border-white/[0.06] bg-gradient-to-br from-sky-950 via-cyan-950/80 to-zinc-950">
@@ -358,9 +380,13 @@ export function PastSelfGraph() {
                 src={hoveredNode.image}
                 alt={hoveredNode.title}
                 fill
-                  className="object-cover"
-                  sizes="320px"
-                />
+                className={
+                  hoveredNode.imageFit === "contain"
+                    ? "object-contain"
+                    : "object-cover object-top"
+                }
+                sizes="320px"
+              />
               ) : (
                 <div className="flex h-full items-center justify-center text-xs font-medium tracking-wide text-cyan-200/50">
                   {hoveredNode.title.slice(0, 1)}
@@ -370,15 +396,9 @@ export function PastSelfGraph() {
             <p className="text-base font-semibold tracking-tight text-white">
               {hoveredNode.title}
             </p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-400">
-              {hoveredNode.cardLines[0]}
-            </p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-400">
-              {hoveredNode.cardLines[1]}
-            </p>
-            <p className="mt-3 text-xs font-medium text-cyan-400/80">
-              Click to open →
-            </p>
+            <div className="mt-3 inline-flex items-center rounded-md border border-cyan-300/25 bg-cyan-400/10 px-3 py-1.5 text-xs font-medium text-cyan-200">
+              Click to learn more
+            </div>
           </motion.div>
         ) : null}
       </AnimatePresence>

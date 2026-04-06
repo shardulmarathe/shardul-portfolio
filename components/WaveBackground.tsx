@@ -25,6 +25,8 @@ export function WaveBackground() {
     if (!canvas) return;
     const ctx = canvas.getContext("2d", { alpha: false });
     if (!ctx) return;
+    const container = canvas.parentElement;
+    if (!container) return;
 
     const onMove = (e: MouseEvent) => {
       const x = e.clientX;
@@ -54,8 +56,8 @@ export function WaveBackground() {
 
     const resize = () => {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      const w = Math.max(container.clientWidth, window.innerWidth);
+      const h = Math.max(container.clientHeight, window.innerHeight);
       canvas.width = Math.floor(w * dpr);
       canvas.height = Math.floor(h * dpr);
       canvas.style.width = `${w}px`;
@@ -64,13 +66,15 @@ export function WaveBackground() {
     };
 
     resize();
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(container);
     window.addEventListener("resize", resize);
     window.addEventListener("mousemove", onMove);
     window.addEventListener("mouseleave", onLeave);
 
     const draw = (now: number) => {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
+      const w = canvas.clientWidth || window.innerWidth;
+      const h = canvas.clientHeight || window.innerHeight;
 
       const g = ctx.createLinearGradient(0, 0, w, h * 1.02);
       g.addColorStop(0, "#000000");
@@ -162,6 +166,7 @@ export function WaveBackground() {
 
     return () => {
       cancelAnimationFrame(frameRef.current);
+      ro.disconnect();
       window.removeEventListener("resize", resize);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseleave", onLeave);

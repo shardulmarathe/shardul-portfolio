@@ -14,6 +14,7 @@ export type PastExperience = {
   title: string;
   cardLines: [string, string];
   image?: string;
+  imageFit?: "cover" | "contain";
   sizeVal: number;
 };
 
@@ -24,6 +25,7 @@ export const PAST_EXPERIENCES: PastExperience[] = PAST_DATA.map(
     title: r.title,
     cardLines: r.cardLines,
     image: r.image,
+    imageFit: r.imageFit,
     sizeVal: r.graphVal,
   })
 );
@@ -41,6 +43,7 @@ export function getPastExperience(
     title: r.title,
     cardLines: r.cardLines,
     image: r.image,
+    imageFit: r.imageFit,
     sizeVal: r.graphVal,
   };
 }
@@ -91,6 +94,7 @@ export function buildPastGraphData() {
     title: e.title,
     cardLines: e.cardLines,
     image: e.image,
+    imageFit: e.imageFit,
     val: e.sizeVal,
   }));
 
