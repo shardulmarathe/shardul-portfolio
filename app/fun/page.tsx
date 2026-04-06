@@ -1,12 +1,29 @@
 import { FunStuffCard } from "@/components/FunStuffCard";
+import { FunStuffFilmStrip } from "@/components/FunStuffFilmStrip";
 import { GlassNavBar } from "@/components/GlassNavBar";
 import { WaveBackground } from "@/components/WaveBackground";
 import { FUN_STUFF_ITEMS } from "@/lib/funStuff";
+import {
+  FUN_STUFF_STRIP_IMAGES_LEFT,
+  FUN_STUFF_STRIP_IMAGES_RIGHT,
+} from "@/lib/funStuffStrips";
 
 export default function FunPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-black text-zinc-100">
       <WaveBackground />
+
+      <FunStuffFilmStrip
+        side="left"
+        images={FUN_STUFF_STRIP_IMAGES_LEFT}
+        durationSec={38}
+      />
+      <FunStuffFilmStrip
+        side="right"
+        images={FUN_STUFF_STRIP_IMAGES_RIGHT}
+        durationSec={46}
+      />
+
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-20 pt-6 sm:px-10 sm:pb-24 lg:px-14 xl:max-w-6xl">
         <GlassNavBar variant="page" />
 

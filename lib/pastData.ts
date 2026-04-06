@@ -27,21 +27,21 @@ export const PAST_DATA: PastRoleData[] = [
     slug: "kf-assistant-master",
     title: "Kung Fu Assistant Master",
     intro:
-      "After moving to Dragon Rhythm Shaolin Kung Fu, training stopped being only personal practice—it became something you passed on. Invited to assist after your red belt, you stepped into classes where patience and precision matter more than flair.",
+      "As an Assistant Master in Shaolin Kung Fu, I led classes of over 200 students, teaching forms, sparring techniques, and discipline as a 2nd-degree black belt. I focused on correcting form, building foundational strength, and mentoring younger students, helping them develop both physical skill and mental focus while progressing through belt levels.",
     description:
-      "Karate years at West Coast Martial Arts (through second-degree red belt) gave you a baseline; Kung Fu asked for new forms, flexibility, and long weekly hours. Teaching folded that discipline outward: correcting stances, pacing a line of kids, and celebrating small wins on test day.",
+      "Last summer, I worked with my Kung Fu master and two header coaches to make a performance in China. After months of organizing kids into rehearsal groups and choreographing synchronized sword forms, we finally performed before the Shaolin Masters, including Grandmaster Shi Yongxin. When they praised our form and discipline, it wasn’t the applause that elated me. IIt was the moment I realized we had earned the respect of masters who had dedicated their lives to Kung Fu.  Our celebration? Sharing plates of Peking Duck.",
     bullets: [
-      "Assistant Master for two years, teaching students from white belt through black belt levels.",
-      "Eagle Level Assistant Master—one step from full master status at the studio.",
-      "Break down traditional forms and basics so beginners feel progress, not overwhelm.",
+      "Every student has a different learning style and pace.",
+      "There is a fine balance between professionalism and personalism",
+      "You need someone in your corner yelling JIAYOU",
     ],
     lessons:
-      "Leadership in a dojo is repetition without condescension—the same cue, calmly, until it lands. You learned that respect flows both ways when you are accountable for someone else’s safety and confidence.",
+      "",
     image: "/past/kf-assistant-master.jpg",
     imageFit: "cover",
     cardLines: [
-      "Spent two years as an Assistant Master, teaching everyone from white belts to black belts at Dragon Rhythm.",
-      "Eagle Level Assistant—coaching forms, discipline, and tests with the same patience you were once shown.",
+      "",
+      "",
     ],
     graphVal: 10,
   },
@@ -50,16 +50,16 @@ export const PAST_DATA: PastRoleData[] = [
     slug: "kf-international-competitor",
     title: "Kung Fu International Competitor",
     intro:
-      "Competition pushed you from studio goals to judged performance—travel, pressure, and athletes who had trained longer than you’d been in the art.",
+      "As an international Shaolin Kung Fu competitor, I trained extensively in forms and sparring, refining precision, power, and control to perform on a global stage. Competing against practitioners from around the world, I learned to stay composed under pressure, adapt to different styles, and push my physical and mental limits while representing my school in high-level tournaments.",
     description:
-      "You earned first- and second-degree black belts with demanding tests (whipchain, staff, advanced aerial skills). When your master invited you to the Golden State International Wushu Championships, hesitation gave way to preparation—and podium finishes you still sound proud recalling.",
+      "While walking across a complex, I came across students punching and kicking. However, when I peered into the door, I saw students doing amazing feats. Headflips. Ariels. You name it; they did it. I was mesmerized and shocked. I ended up signing up for classes through that “simple” demonstration. As I progressed through the belts, I started learning the things I had seen previously. However, I gained much more than skills and cool kicks. I gained an appreciation for the art. The rhythm of training and the sharp focus behind every movement reeled me in. It allowed me to ground myself and bring a burning passion into my life. I didn’t care about the belts; I simply cared about learning.",
     bullets: [
-      "2024 Golden State International Wushu Championships: 1st (Double Daggers), 2nd (Dahuan Fist), 3rd (Pudao) in a stacked age division.",
-      "Second-degree test included uncommon variations—one-legged tornado kick, no-hands kip-up—and the top score in your division that day.",
-      "Traveled with the school to China: performances for Olympic wushu athletes, Shaolin monks, and Abbot Shi Yongxin; absorbed culture beyond the mat.",
-    ],
+        "Do not rush your recovery after a workout",
+        "No matter how good you get, there is always something you can learn and improve on.",
+        "It's hard to see progress in the moment",
+      ],
     lessons:
-      "International rooms reward humility: you can place high beside people with twice your years in the art when preparation meets trust in coaching—and when you treat every round as information, not verdict.",
+      "",
     image: "/past/kf-international-competitor.jpg",
     imageFit: "cover",
     cardLines: [
@@ -73,16 +73,16 @@ export const PAST_DATA: PastRoleData[] = [
     slug: "speech-coach",
     title: "Speech Coach",
     intro:
-      "Years competing across platform events matured into mentoring—turning your own rewrites and round feedback into language other speakers could use.",
+      "As a platform speaking coach at Golden State Academy, I mentored students in crafting and delivering speeches, focusing on structure, clarity, and stage presence. I worked one-on-one to refine arguments, improve delivery techniques like pacing and tone, and build confidence, helping students transform their ideas into compelling, polished performances for competition.",
     description:
-      "You gravitated toward events you could build: Declamation, Original Oratory, Informative, and Program Oral Interpretation, with Informative as a home base. Coaching at Golden State Academy and leading your school club meant less spotlight, more cycles of draft → perform → revise for someone else’s voice.",
+      "Before every practice, I made my students run through tongue twister drills, “red leather, yellow leather,” “unique New York,” over and over until the room dissolved into laughter. Most of them didn’t take it seriously; it felt more like a warm up game than real prep, and I’d get plenty of eye rolls when I insisted we do it again. A few weeks later, right before a competition round, I heard the same phrases echoing in the hallway. A group of them stood in a circle, running the drills on their own, faster this time, sharper. When they walked into the room, their words came out cleaner, more controlled, each sentence landing without the usual stumbles. Afterward, one of them laughed and said, “Okay, that actually worked.”",
     bullets: [
-      "Platform coach at Golden State Academy—one of California’s large competitive speech hubs.",
-      "President of the school Speech & Debate club; balance outreach, culture, and logistics for teammates.",
-      "Help speakers tighten structure, timing, and presence without sanding away personality.",
+      "Learn how to tailor your speeches to your respective audience",
+      "Bad writing can be covered up with good speaking skills but not the other way around.",
+      "Do not use AI for research and writing a speech. It will fail you.",
     ],
     lessons:
-      "The best notes name one concrete lever—an image, a transition, a breath—and leave confidence intact. Teaching oratory made you a better editor of your own blind spots.",
+      "",
     image: "/past/speech-coach.jpg",
     imageFit: "cover",
     cardLines: [
@@ -96,16 +96,16 @@ export const PAST_DATA: PastRoleData[] = [
     slug: "nsda-speech-competitor",
     title: "NSDA Speech Competitor",
     intro:
-      "Eighth grade through senior year, the circuit became a map: locals, invitationals, state qualifiers, NIETOC, and Nationals—each stop another draft of the same stubborn love for Informative.",
+      "I’ve spent the past four years in Speech and Debate not just competing, but constantly refining how I communicate ideas that matter. From breaking down complex topics like quantum computing to exploring nuanced conversations around cultural appropriation and even arguing through devil’s advocacy, I’ve learned how to make abstract or controversial ideas engaging and accessible. Competing across the national circuit, I became a California State Champion and ranked among the top speakers in the country, but what mattered more was the process: testing ideas in front of live audiences, adapting in real time, and turning every round into a conversation rather than a performance. Beyond competing, I co-led and rebuilt my team, mentoring younger speakers, running practices, and creating a space where people could find their voice just like I did.",
     description:
-      "You chased majors on the West Coast—ASU, James Logan, Berkeley—and earned bids and deep runs while juggling illness, AP weeks, and travel. The arc peaked in state and national rooms where the entry pools were unforgiving and the ballots subjective.",
+      "The room was dead silent: a hundred people sounded like none. Everyone was exhausted; the five judges had witnessed 10 hours of speeches, the spectators had endured five grueling speech rounds, and the six other finalists were anxious for the final round.  Sitting there, I could see everyone’s struggles: their posture, their facial expression, their slightest foot movement. I felt it was my responsibility to cheer them up. I plucked up the courage. “How’s everyone doing today?” Chuckles permeated throughout the room as a range of answers flooded in. “Great” “Hungry” “Bored” “Tired”. The room started to die. I was persistent. “Wanna hear a joke?” Seeing collective nods and confused looks, I walked straight into the middle of the room, and looked at every tired, amused face. “What does one ocean say to the other ocean? Nothing, they just wave!” (*awkward chuckles) Yet, the silence evaporated into thin air and gave way to lengthy conversations. Smiles began to reappear on everyone’s faces. The silence didn’t return until the round finally started. I use my voice to create levity in tense situations. ",
     bullets: [
-      "California State Champion in Informative Speaking (CHSSA); qualified out of district rounds for the National Speech & Debate Tournament.",
-      "NIETOC and TOC bids across the season; strong placements at NIETOC in Informative and Original Oratory against national fields.",
-      "At Nationals (Des Moines), 33rd in Informative among 262 national qualifiers—after a tight revision sprint straight from another major commitment.",
+      "In life, there is no such thing as black or white. There is always a gray area.",
+      "The way you present yourself is equally as important as the content you are presenting.",
+      "When you are given a box, go outside of it to succeed.",
     ],
     lessons:
-      "You can respect judges without outsourcing your worth to a single sheet. The season’s lesson was steadiness: revise after every tournament, sleep when you can, and treat pressure as signal—not noise.",
+      "",
     image: "/past/nsda-speech-competitor.jpg",
     imageFit: "cover",
     cardLines: [
@@ -119,16 +119,16 @@ export const PAST_DATA: PastRoleData[] = [
     slug: "ftc-team-captain",
     title: "FTC Team Captain",
     intro:
-      "From LEGO leagues into FIRST Tech Challenge, you captained a team where metal, Java, and match clock all had to agree at once.",
+      "As Team Captain of my FIRST Tech Challenge robotics team, I led both the technical and outreach sides of our work, shaping how we built and shared our ideas. I developed computer vision models to improve our robot’s navigation and built a front end website to document our progress, while also diving into mechanical concepts like gear ratios to design custom 1 to 1 gearboxes. Along the way, I helped secure corporate sponsorships and mentored younger teams, coaching three to the FIRST Lego League World Championships.",
     description:
-      "Autonomous periods, driver-controlled scrambles, and awards rubrics forced a full-stack mindset: mechanical design, sensors, and readable code. You leaned on OpenCV and TensorFlow when the game randomized what the robot had to see.",
+      "Two days before our regional robotics tournament, my garage had turned into mission control, and at 11 PM we were stuck on a bug in our autonomous program that capped us at 15 points instead of the 50 we knew was possible. After hours of frustration, exhaustion set in and conversation faded, so I forced a break by pushing a chaotic GitHub pull request filled with corny jokes, a Rick Astley script, and a ridiculous new robot name, “The Charminator,” then asked for a review. Groans quickly turned into laughter as we spent ten minutes arguing over jokes and names instead of code, and when we returned, everything clicked; we spotted a timing issue in our vision function and fixed the bug in 30 minutes, turning hours of grinding into a quick breakthrough powered by a moment of humor.",
     bullets: [
-      "Captain from elementary FTC-adjacent years through 11th grade; shepherded design, build, and competition rhythm.",
-      "Java control stack with computer vision when missions required recognizing game pieces on the field.",
-      "State tournament qualification and multiple Design and Connect awards across FLL and FTC seasons.",
+      "DEBUGGING NEVER STOPS!",
+      "It's easier to shift gears quickly than ruminate on a problem endlessly",
+      "Tacobell is best food for any type of team lock-in",
     ],
     lessons:
-      "Captaincy is maintenance culture—documentation, handoffs, and calm when the bot fails between matches. A trophy is loud; a repeatable checklist is what saves the next event.",
+      "",
     image: "/past/ftc-team-captain.jpg",
     imageFit: "cover",
     cardLines: [
@@ -142,16 +142,16 @@ export const PAST_DATA: PastRoleData[] = [
     slug: "robotics-founder",
     title: "Business Owner",
     intro:
-      "OwnABot Academy started as a bet that younger students shouldn’t have to stumble through FIRST alone—foundations could be taught with the same joy as competition.",
+      "I taught robotics at OwnABot Academy, leading hands-on classes where students built and programmed robots using LEGO platforms and block-based coding. I guided students through concepts like sensors, loops, and mechanical design while emphasizing creativity and problem-solving, helping them progress from simple builds to competition-style robots. I also supported curriculum development and mentored students in applying robotics to real-world challenges, fostering both technical skills and confidence.",
     description:
-      "You built curriculum and partnerships with after-school programs, turning enrollment into teams that qualified for state and world championships. Revenue became a way to sustain teaching hours, not the headline.",
+      "The robot refused to move. A semicircle of fourth graders stared at it like it had betrayed them. “It worked yesterday,” one muttered, poking the controller. On the screen, a single block sat out of place, but no one noticed. Frustration built quickly, voices overlapping, hands hovering over the keyboard. So I stepped back and said nothing. After a moment, one student squinted at the code. “Wait… why is this here?” he asked, dragging the block into place. The robot lurched forward, then zipped across the floor, sending the group into cheers. Just minutes earlier, they were stuck; now they were chasing it, laughing as it bumped into a chair.",
     bullets: [
-      "Head of OwnABot Academy—robotics and programming fundamentals for students feeding into FIRST pipelines.",
-      "Partnerships with programs such as Safari Kids and Gurukul Academy; sustainable monthly revenue to support instruction.",
-      "Helped launch 10+ FIRST teams, with many advancing to state or world-level tournaments.",
+      "Only when you truly understand something can you truly teach it.",
+      "To teach anyone, you need to teach them the way you would want to learn at that particular age.",
+      "Never leave a child unattended with a computer unless you want them playing Snake game for the entire class.",
     ],
     lessons:
-      "Founding is succession: systems beat charisma. If the next cohort can run a checklist you wrote, the academy survives a busy semester when you cannot be everywhere.",
+      "",
     image: "/past/robotics-founder.jpg",
     imageFit: "cover",
     cardLines: [
