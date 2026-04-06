@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Legacy static site (not part of Next app source)
+    "shardulmarathe.github.io/**",
   ]),
 ]);
 

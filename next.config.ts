@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     // Next 16: only these paths may be passed to `next/image` (query strings allowed under /projects).
     localPatterns: [
       { pathname: "/projects/**" },
+      { pathname: "/past/**" },
       { pathname: "/profile.png" },
     ],
   },

@@ -71,7 +71,9 @@ export function GlassNavBar({ variant = "hero" }: GlassNavBarProps) {
             const isActive =
               item.href === "/"
                 ? pathname === "/"
-                : pathname === item.href;
+                : item.href === "/past"
+                  ? pathname === "/past" || pathname.startsWith("/past/")
+                  : pathname === item.href;
 
             const onNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
               if (item.href === "/" && pathname === "/") {
