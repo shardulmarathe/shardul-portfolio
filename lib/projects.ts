@@ -26,4 +26,10 @@ export const projects: Project[] = [
     imageSrc: `/projects/motus.png?rev=${PROJECT_IMAGE_REV}`,
     imagePreviewZoom: "subtle",
   },
+  {
+    title: "Cardistry",
+    description: "Play around with Cards and their Shuffles",
+    url: "https://cardistrycards.vercel.app/",
+    imageSrc: `/projects/cardistry.png?rev=${PROJECT_IMAGE_REV}`,
+  },
 ];

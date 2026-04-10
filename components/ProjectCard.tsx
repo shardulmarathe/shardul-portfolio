@@ -34,7 +34,7 @@ export function ProjectCard({
       transition={{ duration: 0.45, ease: EASE }}
       whileHover={{ y: -6, scale: 1.02 }}
       whileTap={{ scale: 0.99 }}
-      className="group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/[0.1] bg-zinc-950/50 p-5 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.85),inset_0_1px_0_0_rgba(56,189,248,0.06)] backdrop-blur-xl transition-[box-shadow,border-color,transform] duration-300 hover:border-sky-400/35 hover:shadow-[0_28px_64px_-14px_rgba(56,189,248,0.22),0_20px_48px_-12px_rgba(0,0,0,0.9)] sm:p-6"
+      className="group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-2xl border border-white/[0.1] bg-zinc-950/50 p-5 shadow-[0_12px_40px_-18px_rgba(0,0,0,0.85),inset_0_1px_0_0_rgba(56,189,248,0.06)] backdrop-blur-xl transition-[box-shadow,border-color,transform] duration-300 hover:border-sky-400/35 hover:shadow-[0_28px_64px_-14px_rgba(56,189,248,0.22),0_20px_48px_-12px_rgba(0,0,0,0.9)] sm:p-6"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"

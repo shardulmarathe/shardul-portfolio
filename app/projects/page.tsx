@@ -10,21 +10,17 @@ export default function ProjectsPage() {
       <div className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-20 pt-6 sm:px-10 sm:pb-24 lg:px-14 xl:max-w-6xl">
         <GlassNavBar variant="page" />
 
-        {/*
-          Only the heading + grid move left (transform), closer to the screen edge;
-          nav keeps normal shell padding.
-        */}
-        <section className="mt-10 w-full max-w-3xl -translate-x-4 text-left sm:-translate-x-10 lg:-translate-x-13">
+        <section className="mt-10 w-full text-left">
           <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
             Projects
           </h1>
 
           <ul
-            className="mt-12 grid list-none grid-cols-1 gap-x-7 gap-y-10 p-0 md:grid-cols-2 md:gap-x-8 md:gap-y-11"
+            className="mt-12 grid list-none grid-cols-1 gap-x-7 gap-y-10 p-0 md:grid-cols-3 md:gap-x-8 md:gap-y-11"
             aria-label="Project gallery"
           >
             {projects.map((project, index) => (
-              <li key={project.url} className="min-w-0">
+              <li key={project.url} className="min-w-0 h-full">
                 <ProjectCard
                   title={project.title}
                   description={project.description}
