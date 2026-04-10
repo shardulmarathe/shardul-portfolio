@@ -17,6 +17,6 @@ export const SITE = {
     currentProjects:
       "Developing multi-turn LLM evaluations for lexical entrainment. Mastering probabilistic modeling and statistical inference. Designing and building complex embedded systems. ",
     funFacts:
-      "An AI-generated artwork sold for over $430,000",
+      "Researchers recently found that AI image generators have a 'favorite' color that doesn't actually exist in nature.",
   },
 } as const;
